@@ -18,14 +18,13 @@ from rest_framework import routers
 from rest_framework_swagger.views import get_swagger_view
 
 from production_center_core.raw_material.views import RawMaterialViewSet
+from production_center_core.employee.views import EmployeeViewSet
 
 app_name = "production_center_core"
 schema_view = get_swagger_view(title="Production Center API")
 
 router = routers.DefaultRouter()
 router.register(r"raw-materials", RawMaterialViewSet)
+router.register(r"employees", EmployeeViewSet)
 
-urlpatterns = [
-    path("docs", schema_view),
-    path("api/v1/", include(router.urls, None))
-]
+urlpatterns = [path("docs", schema_view), path("api/v1/", include(router.urls, None))]

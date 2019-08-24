@@ -37,11 +37,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "rest_framework",
-    "rest_framework_swagger",
-    "production_center_core",
-    "production_center_core.raw_material",
 ]
+
+THIRD_APPS = ["rest_framework", "rest_framework_swagger"]
+
+LOCAL_APPS = ["production_center_core", "production_center_core.raw_material", "production_center_core.employee"]
+
+INSTALLED_APPS += LOCAL_APPS + THIRD_APPS
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -111,6 +113,6 @@ USE_TZ = True
 STATIC_URL = "/static/"
 
 REST_FRAMEWORK = {
-    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.AutoSchema',
-    "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.AllowAny"]
+    "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.AutoSchema",
+    "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.AllowAny"],
 }
