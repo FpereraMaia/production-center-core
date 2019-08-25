@@ -5,7 +5,7 @@ from production_center_core.raw_material.models import RawMaterial
 
 class FinalProduct(models.Model):
     name = models.CharField(max_length=100)
-    employee = models.ForeignKey(Employee, on_delete=models.SET_DEFAULT, default="TESTE")
+    employee = models.ForeignKey(Employee, on_delete=models.PROTECT)
     raw_materials = models.ManyToManyField(RawMaterial)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

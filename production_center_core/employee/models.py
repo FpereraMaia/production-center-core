@@ -1,14 +1,15 @@
 from django.db import models
 from enum import Enum
+from production_center_core.production_center_core.models import SoftDeletionModel
 
 
 class EmployeeWorkHours(Enum):
-    FOUR = "4h"
-    SIX = "6h"
-    EIGHT = "8h"
+    FOUR = 4
+    SIX = 6
+    EIGHT = 8
 
 
-class Employee(models.Model):
+class Employee(SoftDeletionModel):
     name = models.CharField(max_length=100)
     work_hours = models.CharField(
         max_length=3, choices=[(work_hour.value, work_hour.value) for work_hour in EmployeeWorkHours]
