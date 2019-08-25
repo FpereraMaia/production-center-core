@@ -29,4 +29,9 @@ router.register(r"raw-materials", RawMaterialViewSet)
 router.register(r"employees", EmployeeViewSet)
 router.register(r"final-products", FinalProductViewSet)
 
-urlpatterns = [path("docs", schema_view), path("api/v1/", include(router.urls, None))]
+patterns = (
+    [path("docs", schema_view), path("api/v1/", include(router.urls, None))],
+    'v1'
+)
+
+urlpatterns = [path('', include(patterns))]
