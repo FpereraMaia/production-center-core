@@ -41,7 +41,12 @@ INSTALLED_APPS = [
 
 THIRD_APPS = ["rest_framework", "rest_framework_swagger"]
 
-LOCAL_APPS = ["production_center_core", "production_center_core.raw_material", "production_center_core.employee"]
+LOCAL_APPS = [
+    "production_center_core",
+    "production_center_core.raw_material",
+    "production_center_core.employee",
+    "production_center_core.final_product",
+]
 
 INSTALLED_APPS += LOCAL_APPS + THIRD_APPS
 
