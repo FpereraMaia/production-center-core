@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import environ
 
+env = environ.Env()
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -23,9 +25,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "z8#3)()airke47nahu_1+&w$mc!bw2!wbkj=z7+(bjh$_^@82m"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env("DEBUG", default=False)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env("ALLOWED_HOSTS", default=["*"])
 
 
 # Application definition
@@ -39,13 +41,14 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 ]
 
-THIRD_APPS = ["rest_framework", "drf_yasg"]
+THIRD_APPS = ["rest_framework", "drf_yasg", "django_elasticsearch_dsl"]
 
 LOCAL_APPS = [
     "production_center_core",
     "production_center_core.raw_material",
     "production_center_core.employee",
     "production_center_core.final_product",
+    "production_center_core.reports",
 ]
 
 INSTALLED_APPS += LOCAL_APPS + THIRD_APPS
@@ -60,7 +63,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "config.urls"
+ROOT_URLCONF = env("ROOT_URLCONF", default="config.urls")
 
 TEMPLATES = [
     {
@@ -78,7 +81,7 @@ TEMPLATES = [
     }
 ]
 
-WSGI_APPLICATION = "config.wsgi.application"
+WSGI_APPLICATION = env("WSGI_APPLICATION", default="config.wsgi.application")
 
 
 # Database
@@ -127,3 +130,5 @@ REST_FRAMEWORK = {
     "DEFAULT_VERSION": "v1",
     "ALLOWED_VERSIONS": ["v1"],
 }
+
+ELASTICSEARCH_DSL = {"default": {"hosts": env("ELASTICSEARCH_DSL_URL", default="localhost:9200")}}

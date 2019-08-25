@@ -19,20 +19,20 @@ from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
-# from rest_framework_swagger.views import get_swagger_view
-
 from production_center_core.raw_material.views import RawMaterialViewSet
 from production_center_core.employee.views import EmployeeViewSet
 from production_center_core.final_product.views import FinalProductViewSet
+from production_center_core.reports.views import ReportsRawMaterialViewSet, ReportsFinalProduct
 
 app_name = "production_center_core"
 api_version = "v1"
-# schema_view = get_swagger_view(title="Production Center API")
 
 router = routers.DefaultRouter()
 router.register(r"raw-materials", RawMaterialViewSet)
 router.register(r"employees", EmployeeViewSet)
 router.register(r"final-products", FinalProductViewSet)
+router.register(r"reports/raw-material", ReportsRawMaterialViewSet, basename="report-raw-material")
+router.register(r"reports/final-products", ReportsFinalProduct, basename="report-final-products")
 
 schema_view = get_schema_view(
     openapi.Info(
