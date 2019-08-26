@@ -48,7 +48,6 @@ LOCAL_APPS = [
     "production_center_core.raw_material",
     "production_center_core.employee",
     "production_center_core.final_product",
-    "production_center_core.reports",
 ]
 
 INSTALLED_APPS += LOCAL_APPS + THIRD_APPS

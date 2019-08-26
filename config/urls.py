@@ -22,7 +22,6 @@ from drf_yasg import openapi
 from production_center_core.raw_material.views import RawMaterialViewSet
 from production_center_core.employee.views import EmployeeViewSet
 from production_center_core.final_product.views import FinalProductViewSet
-from production_center_core.reports.views import ReportsRawMaterialViewSet, ReportsFinalProduct
 
 app_name = "production_center_core"
 api_version = "v1"
@@ -31,8 +30,6 @@ router = routers.DefaultRouter()
 router.register(r"raw-materials", RawMaterialViewSet)
 router.register(r"employees", EmployeeViewSet)
 router.register(r"final-products", FinalProductViewSet)
-router.register(r"reports/raw-material", ReportsRawMaterialViewSet, basename="report-raw-material")
-router.register(r"reports/final-products", ReportsFinalProduct, basename="report-final-products")
 
 schema_view = get_schema_view(
     openapi.Info(
