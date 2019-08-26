@@ -5,8 +5,11 @@ code-convention:
 	black . --line-length=119
 	flake8
 
+test:
+	pytest
+
 migrate:
 	python manage.py makemigrations
 	python manage.py migrate
 
-all: setup-dev migrate code-convention
+all: setup-dev migrate test code-convention

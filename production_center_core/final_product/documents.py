@@ -22,9 +22,7 @@ class FinalProductDocument(Document):
         related_models = [Employee, RawMaterial]
 
     def get_queryset(self):
-        return super().get_queryset().select_related(
-            'employee', 'raw_materials'
-        )
+        return super().get_queryset().select_related("employee", "raw_materials")
 
     def get_instances_from_related(self, related_instance):
         """If related_models is set, define how to retrieve the Car instance(s) from the related model.
