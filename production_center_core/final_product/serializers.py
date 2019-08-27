@@ -7,10 +7,8 @@ from .models import FinalProduct
 
 
 class FinalProductSerializer(serializers.ModelSerializer):
-    # raw_materials = RawMaterialSerializer(many=True)
     raw_materials_related = RawMaterialSerializer(many=True, source="raw_materials", required=False)
     employee_related = EmployeeSerializer(read_only=True, source="employee")
-    # employee = EmployeeSerializer(many=False, read_only=True, source='employee')
 
     class Meta:
         model = FinalProduct

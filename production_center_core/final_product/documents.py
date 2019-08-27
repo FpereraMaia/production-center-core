@@ -32,4 +32,4 @@ class FinalProductDocument(Document):
         if isinstance(related_instance, Employee):
             return related_instance.finalproduct_set.all()
         elif isinstance(related_instance, RawMaterial):
-            return related_instance.finalproduct_set
+            return related_instance.finalproduct_set.all()
