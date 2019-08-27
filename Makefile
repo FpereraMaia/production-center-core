@@ -6,7 +6,7 @@ code-convention:
 	flake8
 
 test:
-	pytest
+	pytest --cov=production_center_core
 
 migrate:
 	python manage.py makemigrations
