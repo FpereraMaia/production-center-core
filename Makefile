@@ -12,4 +12,7 @@ migrate:
 	python manage.py makemigrations
 	python manage.py migrate
 
+build-indexes:
+	python manage.py search_index --rebuild
+
 all: setup-dev migrate test code-convention

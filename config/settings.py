@@ -25,7 +25,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "z8#3)()airke47nahu_1+&w$mc!bw2!wbkj=z7+(bjh$_^@82m"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env("DEBUG", default=False)
+# DEBBUGING TRUE ONLY FOR THIS PROJECTS PURPOSE
+
+DEBUG = env("DEBUG", default=True)
 
 ALLOWED_HOSTS = env("ALLOWED_HOSTS", default=["*"])
 
@@ -86,7 +88,17 @@ WSGI_APPLICATION = env("WSGI_APPLICATION", default="config.wsgi.application")
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {"default": {"ENGINE": "django.db.backends.sqlite3", "NAME": os.path.join(BASE_DIR, "db.sqlite3")}}
+DATABASES = {
+    'default': {
+        'ENGINE': os.environ.get('APP_DB_ENGINE', "django.db.backends.sqlite3"),
+        'NAME': os.environ.get('DB_NAME', os.path.join(BASE_DIR, "db.sqlite3")),
+        'USER': os.environ.get('DB_USER', ''),
+        'PASSWORD': os.environ.get('DB_PASSWORD', ''),
+        'HOST': os.environ.get('DB_HOST', None),
+        'PORT': os.environ.get('DB_PORT', None),
+        'CONN_MAX_AGE': 600,
+    }
+}
 
 
 # Password validation
