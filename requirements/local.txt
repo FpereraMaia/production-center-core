@@ -1,0 +1,9 @@
+-r base.txt
+
+pytest
+black
+flake8
+pytest-cov
+pytest-django
+model_mommy
+pytest-mock

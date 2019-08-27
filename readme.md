@@ -127,3 +127,4 @@ MUST BE:
 ```
  
 2) Improve the code in method "partial_update" in final_product.services module.
+3) Use gunicorn for serve the project.

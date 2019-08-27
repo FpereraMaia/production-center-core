@@ -1,5 +1,5 @@
 setup-dev:
-	pip install -r env/local.txt
+	pip install -r requirements/local.txt
 
 code-convention:
 	black . --line-length=119
