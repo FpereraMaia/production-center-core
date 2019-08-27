@@ -91,7 +91,7 @@ $ python manage.py runserver
 
 ### Docs and OpenAPI Usage
 - Docs: http://localhost:8000/redoc
-- OpenApi Usage: http://localhost:8000/swagger
+- OpenApi to make Requests: http://localhost:8000/swagger
 
 # Know Issues
 1) Post and put "final-products" end-point documentation have a wrong data body example:
