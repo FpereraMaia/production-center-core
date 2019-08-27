@@ -2,6 +2,7 @@ from rest_framework import serializers
 
 from production_center_core.employee.serializers import EmployeeSerializer
 from production_center_core.raw_material.serializers import RawMaterialSerializer
+from production_center_core.final_product.services import FinalProductService
 
 from .models import FinalProduct
 
@@ -19,12 +20,7 @@ class FinalProductSerializer(serializers.ModelSerializer):
         ]
 
     def create(self, validated_data):
-        final_product = FinalProduct()
-        final_product.name = validated_data["name"]
-        final_product.employee = validated_data["employee"]
-        final_product.save()
+        return FinalProductService.create(validated_data)
 
-        for raw_material in validated_data["raw_materials"]:
-            final_product.raw_materials.add(raw_material)
-
-        return final_product
+    def update(self, instance, validated_data):
+        return FinalProductService.update(instance, validated_data)
