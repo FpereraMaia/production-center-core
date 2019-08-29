@@ -87,14 +87,14 @@ WSGI_APPLICATION = env("WSGI_APPLICATION", default="config.wsgi.application")
 
 DATABASES = {
     "default": {
-        "ENGINE": os.environ.get("APP_DB_ENGINE", "django.db.backends.sqlite3"),
+        "ENGINE": os.environ.get("APP_DB_ENGINE", "django.db.backends.postgresql_psycopg2"),
         "NAME": os.environ.get(
-            "DB_NAME", os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "db.sqlite3")
+            "DB_NAME", "postgres"
         ),
-        "USER": os.environ.get("DB_USER", ""),
-        "PASSWORD": os.environ.get("DB_PASSWORD", ""),
-        "HOST": os.environ.get("DB_HOST", None),
-        "PORT": os.environ.get("DB_PORT", None),
+        "USER": os.environ.get("DB_USER", "postgres"),
+        "PASSWORD": os.environ.get("DB_PASSWORD", "PCP"),
+        "HOST": os.environ.get("DB_HOST", "localhost"),
+        "PORT": os.environ.get("DB_PORT", "5432"),
         "CONN_MAX_AGE": 600,
     }
 }
