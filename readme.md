@@ -93,7 +93,7 @@ $ python manage.py runserver
 - Docs: http://localhost:8000/redoc
 - OpenApi to make Requests: http://localhost:8000/swagger
 
-# Know Issues
+# Known Issues
 1) Post and put "final-products" end-point documentation have a wrong data body example:
 ```
 Today is:
