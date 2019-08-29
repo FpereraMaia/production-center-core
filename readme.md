@@ -39,6 +39,8 @@ $ pyenv virtualenv 3.6.9 production-center-core
 ### Installing all Dependencies, Running Migrate SQLite, Tests and code convention
 
 ```
+$ echo 'export DJANGO_SETTINGS_MODULE=config.settings' >> ~/.bashrc
+$ exec "$SHELL"
 $ make all
 ```
 

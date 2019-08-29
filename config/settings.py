@@ -14,9 +14,6 @@ import os
 import environ
 
 env = environ.Env()
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -89,14 +86,16 @@ WSGI_APPLICATION = env("WSGI_APPLICATION", default="config.wsgi.application")
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': os.environ.get('APP_DB_ENGINE', "django.db.backends.sqlite3"),
-        'NAME': os.environ.get('DB_NAME', os.path.join(BASE_DIR, "db.sqlite3")),
-        'USER': os.environ.get('DB_USER', ''),
-        'PASSWORD': os.environ.get('DB_PASSWORD', ''),
-        'HOST': os.environ.get('DB_HOST', None),
-        'PORT': os.environ.get('DB_PORT', None),
-        'CONN_MAX_AGE': 600,
+    "default": {
+        "ENGINE": os.environ.get("APP_DB_ENGINE", "django.db.backends.sqlite3"),
+        "NAME": os.environ.get(
+            "DB_NAME", os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "db.sqlite3")
+        ),
+        "USER": os.environ.get("DB_USER", ""),
+        "PASSWORD": os.environ.get("DB_PASSWORD", ""),
+        "HOST": os.environ.get("DB_HOST", None),
+        "PORT": os.environ.get("DB_PORT", None),
+        "CONN_MAX_AGE": 600,
     }
 }
 
